@@ -5,8 +5,8 @@
     "target_path": "device/qcom/common"
   },
   {
-    "branch": "cm-14.1",
-    "repository": "LineageOS/android_kernel_zte_msm8996",
+    "branch": "c7.1.2",
+    "repository": "CandyDevices/kernel_zte_msm8996",
     "target_path": "kernel/zte/msm8996"
   },
   {
