@@ -124,6 +124,9 @@
   TARGET_USES_HWC2 := true
   TARGET_USES_GRALLOC1 := true
 
+# Filesystem
+  TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+  
 # GPS
   TARGET_NO_RPC := true
   USE_DEVICE_SPECIFIC_GPS := true
