@@ -328,6 +328,7 @@ PRODUCT_PACKAGES += \
     wifi_symlinks
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wifi/filter_ie:system/etc/wifi/filter_ie \
     $(LOCAL_PATH)/configs/wcnss/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/configs/wcnss/hostapd.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/configs/wcnss/hostapd.deny:system/etc/hostapd/hostapd.deny \
@@ -344,5 +345,3 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
 
 $(call inherit-product-if-exists, vendor/zte/axon7/axon7-vendor.mk)
-
-
