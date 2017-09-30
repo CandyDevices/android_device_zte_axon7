@@ -40,8 +40,6 @@ on early-init
     chmod 0620 /dev/kmsg
 
 on init
-    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8996.so|libshim_camera.so:/system/vendor/lib/libZEffectLib.so|libshim_camera.so"
-
     # Set permissions for persist partition
     mkdir /persist 0771 root system
 
@@ -56,6 +54,16 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
     write sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
+    # Create cgroup mount point for memory
+    mkdir /sys/fs/cgroup/memory/bg 0750 root system
+    write /sys/fs/cgroup/memory/bg/memory.swappiness 140
+    write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
+    chown root system /sys/fs/cgroup/memory/bg/tasks
+    chmod 0660 /sys/fs/cgroup/memory/bg/tasks
+
+    # Camera shims
+    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8996.so|/system/lib/libshim_camera.so:/system/vendor/lib/libmmcamera_ppeiscore.so|/system/lib/libshim_camera.so"
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
