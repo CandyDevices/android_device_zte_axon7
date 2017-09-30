@@ -101,7 +101,6 @@ persist.timed.enable=true
 DEVICE_PROVISIONED=1
 persist.data.iwlan.enable=true
 persist.data.qmi.adb_logmask=0
-persist.dpm.feature=0
 persist.net.doxlat=false
 persist.radio.add_power_save=1
 persist.radio.apm_sim_not_pwdn=1
