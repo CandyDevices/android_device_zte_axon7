@@ -121,13 +121,6 @@ $(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.m
 PRODUCT_PACKAGES += \
     ZTEDoze
 
-# File System
-PRODUCT_PACKAGES += \
-    fs_config_files
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
-
 # GPS
 PRODUCT_PACKAGES += \
     libgnss \
