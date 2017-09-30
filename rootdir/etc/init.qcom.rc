@@ -215,6 +215,7 @@ on early-boot
     setrlimit 8 67108864 67108864
 
     write /sys/kernel/boot_adsp/boot 1
+    write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
 
 on boot
