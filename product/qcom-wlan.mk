@@ -18,11 +18,12 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     hostapd \
+    libwpa_client \
     wificond \
     wifilogd \
+    wifi_symlinks \
     wpa_supplicant \
     wpa_supplicant.conf \
-    wifi_symlinks
 
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
