@@ -125,6 +125,10 @@
   TARGET_NO_RPC := true
   USE_DEVICE_SPECIFIC_GPS := true
 
+# HIDL 
+  DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+
+
 # Init
   TARGET_INIT_VENDOR_LIB := libinit_axon7
   TARGET_RECOVERY_DEVICE_MODULES := libinit_axon7
@@ -141,7 +145,7 @@
   TARGET_KERNEL_HEADER_ARCH := arm64
   TARGET_KERNEL_SOURCE := kernel/zte/msm8996
   TARGET_KERNEL_CONFIG := lineageos_axon7_defconfig
-  KERNEL_TOOLCHAIN_PREFIX :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-6.2/bin/aarch64-linux-android-
+#  KERNEL_TOOLCHAIN_PREFIX :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-6.2/bin/aarch64-linux-android-
 
 # Keystore
   TARGET_PROVIDES_KEYMASTER := true
