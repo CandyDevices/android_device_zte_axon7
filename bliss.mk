@@ -2,7 +2,7 @@
 PRODUCT_COPY_FILES := device/zte/axon7/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Include pure telephony configuration
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/bliss/config/common.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -13,7 +13,7 @@ $(call inherit-product, device/zte/axon7/device.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := axon7
-PRODUCT_NAME := aosp_axon7
+PRODUCT_NAME := bliss_axon7
 PRODUCT_BRAND := ZTE
 PRODUCT_MODEL := ZTE A2017U
 PRODUCT_MANUFACTURER := ZTE
