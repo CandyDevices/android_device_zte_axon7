@@ -129,12 +129,12 @@ PRODUCT_PACKAGES += \
     libgnsspps
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps/flp.conf:system/etc/flp.conf \
-    $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps/izat.conf:system/etc/izat.conf \
-    $(LOCAL_PATH)/configs/gps/lowi.conf:system/etc/lowi.conf \
-    $(LOCAL_PATH)/configs/gps/sap.conf:system/etc/sap.conf \
-    $(LOCAL_PATH)/configs/gps/xtwifi.conf:system/etc/xtwifi.conf
+    $(LOCAL_PATH)/configs/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
+    $(LOCAL_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+    $(LOCAL_PATH)/configs/gps/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
+    $(LOCAL_PATH)/configs/gps/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
+    $(LOCAL_PATH)/configs/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
+    $(LOCAL_PATH)/configs/gps/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
@@ -199,11 +199,11 @@ PRODUCT_PACKAGES += \
 
 # IRQ balance
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/qcom/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+    $(LOCAL_PATH)/configs/qcom/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # IRSC
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps/sec_config:system/etc/sec_config
+    $(LOCAL_PATH)/configs/gps/sec_config:$(TARGET_COPY_OUT_VENDOR)//etc/sec_config
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
@@ -226,8 +226,8 @@ PRODUCT_PACKAGES += \
     Tag
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
+    $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
@@ -251,13 +251,13 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_dolby.xml:system/etc/media_codecs_dolby.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    $(LOCAL_PATH)/configs/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_dolby.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_dolby.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
+    $(LOCAL_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
 
 # Power HAL
  PRODUCT_PACKAGES += \
