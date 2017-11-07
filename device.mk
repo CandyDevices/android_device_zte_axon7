@@ -218,6 +218,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     lights.msm8996
 
+# Net
+PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0
+
 # NFC
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
