@@ -185,7 +185,7 @@ TARGET_USES_INTERACTION_BOOST := true
   TARGET_USE_SDCLANG := true
 
 # Recovery
-  TARGET_RECOVERY_FSTAB := device/zte/axon7/rootdir/etc/fstab.qcom
+  TARGET_RECOVERY_FSTAB := device/zte/axon7/rootdir/etc/fstab.full
   TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_axon7
   TARGET_RELEASETOOLS_EXTENSIONS := device/zte/axon7
 
