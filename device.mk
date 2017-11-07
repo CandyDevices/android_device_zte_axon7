@@ -133,7 +133,7 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8996 \
+    libgnss \
     libcurl \
     libgnsspps
 
