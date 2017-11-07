@@ -315,6 +315,7 @@ PRODUCT_COPY_FILES += \
 # Wifi
 PRODUCT_PACKAGES += \
     wificond \
+    wifilogd \
     libwpa_client \
     ipacm \
     ipacm-diag \
