@@ -189,9 +189,6 @@ TARGET_USES_INTERACTION_BOOST := true
   TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_axon7
   TARGET_RELEASETOOLS_EXTENSIONS := device/zte/axon7
 
-# Sensors
-  USE_SENSOR_MULTI_HAL := true
-
 # Sepolicy (SeLinux)
 #  BOARD_SEPOLICY_DIRS += \
 #      device/zte/axon7/sepolicy
