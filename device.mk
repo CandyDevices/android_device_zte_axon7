@@ -308,6 +308,7 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    libwpa_client \
     ipacm \
     ipacm-diag \
     IPACM_cfg.xml \
