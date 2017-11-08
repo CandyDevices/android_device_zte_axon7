@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio@2.0-service \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio.effect@2.0-service \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -66,9 +70,12 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
 
 # Bluetooth
-PRODUCT_COPY_FILES += \
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-service \
     libbt-vendor \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+ 
+ PRODUCT_COPY_FILES += \
+ frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 # Boot Animation
@@ -78,6 +85,9 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@3.2-impl \
     libshim_camera \
     Snap
 
@@ -100,6 +110,13 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
     calib.cfg \
     copybit.msm8996 \
     gralloc.msm8996 \
@@ -120,10 +137,27 @@ $(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.m
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    ZTEDoze
+    ZTEDoze 
+    
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service \
+    
+# Fingerprint sensor
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.0-service \
+    
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+
 
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl-qti \
+    android.hardware.gnss@1.0-service-qti \
     libgnss \
     libcurl \
     libgnsspps
@@ -138,51 +172,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
-
-# Hidl imp and services
-PRODUCT_COPY_FILES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio.effect@2.0-service \
-    android.hardware.bluetooth@1.0-service \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    camera.device@3.2-impl \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.composer@2.1-service \
-    android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service\
-    android.hardware.biometrics.fingerprint@2.0-service \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
-    android.system.net.netd@1.0 \
-    netutils-wrapper-1.0 \
-    android.hardware.nfc@1.0-impl \
-    android.hardware.nfc@1.0-service \
-    android.hardware.power@1.0-impl \
-    android.hardware.power@1.0-service \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service \
-    android.hardware.renderscript@1.0-impl \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service \
-    android.hardware.usb@1.0-service \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
-    android.hardware.wifi@1.0-service
-
 
 # Init scripts
 PRODUCT_PACKAGES += \
@@ -212,18 +201,28 @@ PRODUCT_COPY_FILES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl
-
+    $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl 
+    
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
+    
 # Lights
 PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
     lights.msm8996
 
 # Net
-PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES =+ \
+    android.system.net.netd@1.0 \
     netutils-wrapper-1.0
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
     nfc_nci.msm8996 \
     NfcNci \
@@ -264,8 +263,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml
 
 # Power HAL
- PRODUCT_PACKAGES += \
-     power.msm8996
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
+    power.msm8996
 
 # QMI
 PRODUCT_PACKAGES += \
@@ -274,6 +275,10 @@ PRODUCT_PACKAGES += \
 # Recovery
 PRODUCT_PACKAGES += \
     librecovery_updater_axon7 
+    
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl \
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -297,21 +302,39 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+    
+#Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service \
 
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service \
+    
+# Touchscreen
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/idc/synaptics_dsx.idc:system/usr/idc/synaptics_dsx.idc \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml    
+    
 # USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service \
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
-
-# Touchscreen
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/synaptics_dsx.idc:system/usr/idc/synaptics_dsx.idc \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
+    
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service\
 
 # Wifi
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service\
     wificond \
     wifilogd \
     libwpa_client \
