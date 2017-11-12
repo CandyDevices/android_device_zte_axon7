@@ -39,7 +39,19 @@ on early-init
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
 
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    mount_all fstab.qcom
+
+    mkdir /persist/data 0700 system system
+    mkdir /persist/bms 0700 root system
+    restorecon_recursive /persist
+
 on init
+    write sys/module/qpnp_rtc/parameters/poweron_alarm 1
+    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8996.so|libshim_camera.so:/system/vendor/lib/libZEffectLib.so|libshim_camera.so"
+
     # Set permissions for persist partition
     mkdir /persist 0771 root system
 
@@ -52,16 +64,6 @@ on init
     write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
-
-    write sys/module/qpnp_rtc/parameters/poweron_alarm 1
-
-on fs
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
-    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount_all fstab.qcom
-
-    mkdir /persist/data 0700 system system
-    restorecon_recursive /persist
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
@@ -176,7 +178,7 @@ on post-fs-data
 
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
-	
+
     # Sensor
     mkdir /data/misc/sensors
     mkdir /persist/sensors 0770 system system
@@ -291,7 +293,7 @@ on boot
     # NDT weight port
     chown system system /dev/ndt_i2c_node
     chmod 0644 /dev/ndt_i2c_node
-    
+
     # Glove mode
     chown system system /proc/gloved_finger_switch
     chmod 0644 /proc/gloved_finger_switch
@@ -415,7 +417,7 @@ service qti /system/vendor/bin/qti
     group radio net_raw diag usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
-service sensors /system/vendor/bin/sensors.qcom
+service sensors /system/bin/sensors.qcom
     class core
     user root
     group root
