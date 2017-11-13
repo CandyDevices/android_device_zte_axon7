@@ -49,7 +49,7 @@ on fs
     restorecon_recursive /persist
 
 on init
-    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8996.so|libshim_camera.so:/system/vendor/lib/libZEffectLib.so|libshim_camera.so"
+    export LD_SHIM_LIBS "/system/lib/hw/camera.msm8996.so|libcamera_shim.so:/system/vendor/lib/libZEffectLib.so|libcamera_shim.so"
 
     write sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
@@ -323,21 +323,21 @@ on boot
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
 
-service perfd /system/vendor/bin/perfd
-    class main
-    user root
-    group root readproc
-    disabled
-    socket perfd seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
+#service perfd /system/vendor/bin/perfd
+#    class main
+#    user root
+#    group root readproc
+#    disabled
+#    socket perfd seqpacket 0666 root system
+#    writepid /dev/cpuset/system-background/tasks
 
-service iop /system/vendor/bin/iop
-    class main
-    user root
-    group root
-    disabled
-    socket iop seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
+#service iop /system/vendor/bin/iop
+#    class main
+#    user root
+#    group root
+#    disabled
+#    socket iop seqpacket 0666 root system
+#    writepid /dev/cpuset/system-background/tasks
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
@@ -360,25 +360,25 @@ on property:vold.decrypt=trigger_restart_framework
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service cnd /system/vendor/bin/cnd
+service cnd /system/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
     writepid /dev/cpuset/system-background/tasks
 
-service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
 
-service rmt_storage /system/vendor/bin/rmt_storage
+service rmt_storage /system/bin/rmt_storage
     class core
     user root
     shutdown critical
     ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
-service tftp_server /system/vendor/bin/tftp_server
+service tftp_server /system/bin/tftp_server
    class core
    user root
    writepid /dev/cpuset/system-background/tasks
@@ -389,14 +389,14 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
-service start_hci_filter /system/vendor/bin/wcnss_filter
+service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth diag system wakelock
     seclabel u:r:bluetooth:s0
     disabled
 
-service netmgrd /system/vendor/bin/netmgrd
+service netmgrd /system/bin/netmgrd
     class main
     writepid /dev/cpuset/system-background/tasks
 
@@ -436,7 +436,7 @@ on property:ro.data.large_tcp_window_size=true
 on property:sys.sysctl.tcp_adv_win_scale=*
     write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
 
-service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/vendor/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -452,13 +452,13 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service cnss_diag /system/vendor/bin/cnss_diag -q -f
+service cnss_diag /system/bin/cnss_diag -q -f
     class main
     user system
     group system wifi inet net_admin sdcard_rw media_rw diag
     disabled
 
-service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
+service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
@@ -466,7 +466,7 @@ service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
 on property:sys.shutdown.requested=*
     stop cnss-daemon
 
-service loc_launcher /system/vendor/bin/loc_launcher
+service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet diag wifi
@@ -477,7 +477,7 @@ service qcom-sh /vendor/bin/init.qcom.sh
     user root
     oneshot
 
-service hostapd_fst /vendor/bin/hostapd -dd -g /data/vendor/wifi/hostapd/global /data/vendor/wifi/hostapd.conf
+service hostapd_fst /system/vendor/bin/hostapd -dd -g /data/vendor/wifi/hostapd/global /data/vendor/wifi/hostapd.conf
     class late_start
     user wifi
     group wifi inet keystore net_admin net_raw
@@ -488,7 +488,7 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service ril-daemon2 /vendor/bin/hw/rild -c 2
+service ril-daemon2 /system/vendor/bin/hw/rild -c 2
     class main
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
@@ -529,21 +529,21 @@ on charger
     setprop persist.sys.usb.config charging
 
 #start camera server as daemon
-service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
 
 #Start up peripheral manager
-service per_mgr system/vendor/bin/pm-service
+service per_mgr system/bin/pm-service
     class core
     user system
     group system net_raw
     ioprio rt 4
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /system/vendor/bin/pm-proxy
+service per_proxy /system/bin/pm-proxy
     class core
     user system
     group system
@@ -556,7 +556,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service qseecomd /system/vendor/bin/qseecomd
+service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
@@ -603,24 +603,24 @@ on property:debug.zte.vr_mode=0
     stop thermal-perf
     start thermal-engine
 
-service adsprpcd /system/vendor/bin/adsprpcd
-    class main
-    user media
-    group media
+#service adsprpcd /system/bin/adsprpcd
+#    class main
+#    user media
+#    group media
 
-service audiod /system/vendor/bin/audiod
+service audiod /system/bin/audiod
     class late_start
     user system
     group system
 
-service imsqmidaemon /system/vendor/bin/imsqmidaemon
+service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
     writepid /dev/cpuset/system-background/tasks
 
-service imsdatadaemon /system/vendor/bin/imsdatadaemon
+service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -642,7 +642,7 @@ on property:persist.sys.pd_enable=0
 on property:vendor.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
-service ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
+service ims_rtp_daemon /system/bin/ims_rtp_daemon
     class main
     user system
     group radio diag inet log
@@ -690,7 +690,7 @@ service energy-awareness /system/vendor/bin/energy-awareness
     group system
     oneshot
 
-service hvdcp_opti /system/vendor/bin/hvdcp_opti
+service hvdcp_opti /system/bin/hvdcp_opti
     class main
     user root
     group root
@@ -703,7 +703,7 @@ service gx_fpd /system/vendor/bin/gx_fpd
     onrestart restart fingerprintd
     writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/vendor/bin/time_daemon
+service time_daemon /system/bin/time_daemon
     class main
     user root
     group root
