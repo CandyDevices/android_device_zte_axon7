@@ -164,7 +164,7 @@ PRODUCT_COPY_FILES += \
     android.hardware.gnss@1.0-impl-qti \
     android.hardware.gnss@1.0-service-qti \
     android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
+    android.hardware.keymaster@3.0-service \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service \
     android.system.net.netd@1.0 \
@@ -180,7 +180,7 @@ PRODUCT_COPY_FILES += \
     android.hardware.sensors@1.0-service \
     android.hardware.usb@1.0-service \
     android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
+    android.hardware.vibrator@1.0-service \
     android.hardware.wifi@1.0-service
 
 
@@ -273,7 +273,7 @@ PRODUCT_PACKAGES += \
 
 # Recovery
 PRODUCT_PACKAGES += \
-    librecovery_updater_axon7 
+    librecovery_updater_axon7
 
 # RIL
 PRODUCT_PACKAGES += \
