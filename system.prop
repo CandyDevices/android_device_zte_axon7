@@ -28,6 +28,11 @@ tunnel.audio.encode=false
 use.qti.sw.ape.decoder=true
 use.voice.path.for.pcm.voip=true
 
+# ADB at boot
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
+
 #Bluetooth
 bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
