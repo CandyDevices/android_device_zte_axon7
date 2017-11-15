@@ -1,5 +1,6 @@
 # Get the long list of APNs
-PRODUCT_COPY_FILES := device/zte/axon7/apns-full-conf.xml:system/etc/apns-conf.xml
+PRODUCT_COPY_FILES += \
+    device/zte/axon7/apns-full-conf.xml:system/etc/apns-conf.xml
 
 # Include pure telephony configuration
 $(call inherit-product, vendor/candy/config/common.mk)

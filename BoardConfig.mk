@@ -129,8 +129,8 @@
   USE_DEVICE_SPECIFIC_GPS := true
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-TARGET_FS_CONFIG_GEN += $(COMMON_PATH)/config.fs
+DEVICE_MANIFEST_FILE := device/zte/axon7/manifest.xml
+TARGET_FS_CONFIG_GEN += device/zte/axon7/config.fs
 
 # Init
   TARGET_INIT_VENDOR_LIB := libinit_axon7
@@ -225,7 +225,7 @@ TARGET_USES_INTERACTION_BOOST := true
   WIFI_DRIVER_FW_PATH_P2P := "p2p"
   WPA_SUPPLICANT_VERSION := VER_0_8_X
 
-  # EAS 
+  # EAS
   ENABLE_CPUSETS := true
   ENABLE_SCHEDBOOST := true
 
