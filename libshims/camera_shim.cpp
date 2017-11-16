@@ -43,6 +43,9 @@ extern "C" void _ZN7android13GraphicBufferC1EjjijjP13native_handleb(
         inFormat, static_cast<uint32_t>(1), static_cast<uint64_t>(inUsage), inStride);
 }
 
+// needed by libFNVfbEngineHAL.so
+extern "C" void _ZN7android13GraphicBuffer10reallocateEjjij();
+
 extern "C" void _ZN7android20DisplayEventReceiverC1ENS_16ISurfaceComposer11VsyncSourceE();
 
 extern "C" void _ZN7android20DisplayEventReceiverC1Ev() {
