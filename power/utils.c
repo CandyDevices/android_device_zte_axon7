@@ -93,7 +93,7 @@ static void *get_iop_handle()
 
     dlerror();
 
-    handle = dlopen("libqti-iop-client.so", RTLD_NOW | RTLD_LOCAL);
+    handle = dlopen("libqti-iopd-client.so", RTLD_NOW | RTLD_LOCAL);
     if (!handle) {
         ALOGE("Unable to open prefetcher: %s\n", dlerror());
     }
