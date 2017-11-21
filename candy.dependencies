@@ -6,17 +6,5 @@
   {
     "repository": "kernel_zte_msm8996",
     "target_path": "kernel/zte/msm8996"
-  },
-  {
-    "repository": "vendor_nxp-nfc_opensource_frameworks",
-    "target_path": "vendor/nxp-nfc/opensource/frameworks"
-  },
-  {
-    "repository": "endor_nxp-nfc_opensource_libnfc-nci",
-    "target_path": "vendor/nxp-nfc/opensource/libnfc-nci"
-  },
-  {
-    "repository": "vendor_nxp-nfc_opensource_Nfc",
-    "target_path": "vendor/nxp-nfc/opensource/Nfc"
   }
 ]
