@@ -209,7 +209,10 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 #BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # SHIMS
-TARGET_LD_SHIM_LIBS := /system/vendor/lib/hw/camera.msm8996.so|/system/vendor/lib/libshim_camera.so:/system/vendor/lib/libmmcamera_ppeiscore.so|/system/vendor/lib/libshim_camera.so:/system/vendor/lib/libFNVfbEngineHAL.so|/system/vendor/lib/libshim_camera.so
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/lib/hw/camera.msm8996.so|/system/vendor/lib/libshim_camera.so \
+    /system/vendor/lib/libmmcamera_ppeiscore.so|/system/vendor/lib/libshim_camera.so \
+    /system/vendor/lib/libFNVfbEngineHAL.so|/system/vendor/lib/libshim_camera.so
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
